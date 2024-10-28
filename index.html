@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red & Black Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Music Player</h1>
+        <input type="file" id="file-input" accept="audio/mp3" />
+        <div class="controls">
+            <button id="play-btn">Play</button>
+            <button id="pause-btn">Pause</button>
+            <input type="range" id="volume-slider" min="0" max="100" value="100" />
+            <label for="pitch-slider">Pitch:</label>
+            <input type="range" id="pitch-slider" min="-12" max="12" value="0" />
+            <label for="frequency-slider">Frequency:</label>
+            <input type="range" id="frequency-slider" min="20" max="20000" value="440" />
+            <button id="share-btn">Share</button>
+        </div>
+        <h2 id="song-title">No song selected</h2>
+        <div id="lyrics"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
