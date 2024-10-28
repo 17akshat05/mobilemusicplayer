@@ -48,9 +48,28 @@ frequencySlider.addEventListener('input', () => {
     console.log(`Set frequency to ${frequencyValue} Hz`); // Placeholder for frequency functionality
 });
 
-shareBtn.addEventListener('click', () => {
+shareBtn.addEventListener('click', async () => {
     if (currentSong) {
-        // Implement sharing functionality
-        alert('Sharing feature coming soon!'); // Placeholder for sharing functionality
+        try {
+            const file = fileInput.files[0];
+
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                await navigator.share({
+                    title: 'Listen to this song',
+                    text: `Check out this song: ${file.name}`,
+                    files: [file], // Share as a file
+                });
+                alert("Shared successfully!");
+            } else {
+                alert("Sharing not supported on this browser.");
+            }
+        } catch (error) {
+            console.error("Error sharing file:", error);
+            alert("An error occurred while sharing.");
+        }
+    } else {
+        alert("Please select a song to share.");
     }
+});
+
 });
